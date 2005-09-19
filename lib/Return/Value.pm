@@ -3,7 +3,7 @@ package Return::Value;
 use strict;
 
 use vars qw[$VERSION @EXPORT];
-$VERSION = '1.28';
+$VERSION = '1.30';
 @EXPORT  = qw[success failure];
 
 use base qw[Exporter];
@@ -14,11 +14,13 @@ Return::Value - Polymorphic Return Values
 
 =head1 VERSION
 
-version 1.28
+version 1.30
 
  $Id: Value.pm,v 1.5 2005/01/06 17:15:09 rjbs Exp $
 
 =head1 SYNOPSIS
+
+Used with basic function-call interface:
 
   use Return::Value;
   
@@ -38,6 +40,8 @@ version 1.28
       # string
       print $result;
   }
+
+Or, build your Return::Value as an object:
   
   sub build_up_return {
       my $return = failure;
@@ -180,7 +184,7 @@ sub failure { _builder('failure', @_) }
 
 =back
 
-=head2 Methods
+=head1 METHODS
 
 The object API is useful in code that is catching C<Return::Value> objects.
 
@@ -226,8 +230,8 @@ if given no name.
 
 =item other attribute accessors
 
-Simple accessors exist for the object's other attributes: type, errno, string,
-and data.
+Simple accessors exist for the object's other attributes: C<type>, C<errno>,
+C<string>, and C<data>.
 
 =cut
 
@@ -268,7 +272,7 @@ listed here.
 
 =over 4
 
-=item Stringify
+=item Stringif
 
   print "$result\n";
 
@@ -288,7 +292,7 @@ Also returns the C<bool> value.
 
 Dereferencing the value as a hash or array will return the value of the data
 attribute, if it matches that type, or an empty reference otherwise.  You can
-check C<<ref $result->data>> to determine what kind of data (if any) was
+check C<< ref $result->data >> to determine what kind of data (if any) was
 passed.
 
 =cut
@@ -333,6 +337,6 @@ Ricardo Signes, <F<rjbs@cpan.org>>.
 
 =cut
 
-1;
+"This return value is true.";
 
 __END__
