@@ -1,4 +1,8 @@
-1.26   2004-12-20	16:00
+1.20   2005-09-18 23:30
+       minor POD cleanup
+       added pod coverage test (kwalitee suckup)
+
+1.28   2004-12-20	16:00
        changed bool return to just call ->bool
        (returning undef crashes 5.6.1, argh! thanks, HDP!)
 
