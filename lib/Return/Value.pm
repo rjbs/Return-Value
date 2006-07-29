@@ -3,7 +3,7 @@ package Return::Value;
 use strict;
 
 use vars qw[$VERSION @EXPORT];
-$VERSION = '1.30';
+$VERSION = '1.301';
 @EXPORT  = qw[success failure];
 
 use base qw[Exporter];
@@ -154,7 +154,7 @@ sub _builder {
     __PACKAGE__->new(%args);
 }
 
-=item C<< success >>
+=item success
 
 The C<success> function returns a C<Return::Value> with the type "success".
 
@@ -171,7 +171,7 @@ sub success { _builder('success', @_) }
 
 =pod
 
-=item C<< failure >>
+=item failure
 
 C<failure> is identical to C<success>, but returns an object with the type
 "failure"
@@ -272,7 +272,7 @@ listed here.
 
 =over 4
 
-=item Stringif
+=item Stringification
 
   print "$result\n";
 

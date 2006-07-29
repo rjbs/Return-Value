@@ -1,4 +1,4 @@
-use Test::More tests => 18;
+use Test::More tests => 22;
 use strict;
 $^W = 1;
 
@@ -11,6 +11,12 @@ my $failure = failure;
 ok ! $failure, 'bad';
 
 is ''.success("Good"), "Good", 'stringified good is good';
+
+ok(success("Good") eq 'Good', 'overloaded "eq"');
+ok(success("Good") ne 'Gqqd', 'overloaded "ne"');
+
+ok(success("Good") lt 'Hood', 'overloaded "lt"');
+ok(success("Good") gt 'Food', 'overloaded "gt"');
 
 ok failure() < 1 && failure() > -1 && failure() == 0, 'failure is zero';
 
