@@ -1,0 +1,142 @@
+NAME
+    Return::Value - Polymorphic Return Values
+
+SYNOPSIS
+      use Return::Value;
+  
+      sub send_over_network {
+          my ($net, $send) = @_:
+          if ( $net->transport( $send ) ) {
+              return success;
+          } else {
+              return failure "Was not able to transport info.";
+          }
+      }
+  
+      my $result = $net->send_over_network(  "Data" );
+  
+      # boolean
+      unless ( $result ) {
+          # string
+          print $result;
+      }
+  
+      sub build_up_return {
+          my $return = failure;
+      
+          if ( ! foo() ) {
+              $return->string("Can't foo!");
+              return $return;
+          }
+      
+          if ( ! bar() ) {
+              $return->string("Can't bar");
+              $return->prop(failures => \@bars);
+              return $return;
+          }
+      
+          # we're okay if we made it this far.
+          $return++;
+          return $return; # success!
+      }
+
+DESCRIPTION
+    Polymorphic return values are really useful. Often, we just want to know
+    if something worked or not. Other times, we'd like to know what the
+    error text was. Still others, we may want to know what the error code
+    was, and what the error properties were. We don't want to handle objects
+    or data structures for every single return value, but we do want to
+    check error conditions in our code because that's what good programmers
+    do.
+
+    When functions are successful they may return true, or perhaps some
+    useful data. In the quest to provide consistent return values, this gets
+    confusing between complex, informational errors and successful return
+    values.
+
+    This module provides these features with a simple API that should get
+    you what you're looking for in each contex a return value is used in.
+
+  Functions
+    The functional interface is highly recommended for use within functions
+    that are using "Return::Value"s.
+
+    success
+    failure
+
+  Methods
+    The object API is useful in code that is catching "Return::Value"
+    objects.
+
+    new
+          my $return = Return::Value->new(
+              bool   => 0,
+              string => "YOU FAIL",
+              prop   => {
+                  failed_objects => \@objects,
+              },
+          );
+
+        Creates a new "Return::Value" object. You can set the following
+        options.
+
+        "bool", the boolean representation of the result. Defaults to false.
+
+        "errno", the error number. Defaults to 1 or 0 based on the value of
+        "bool".
+
+        "string", the string representation of the result.
+
+        "data", data associated with the result, usually for success.
+
+        "prop", properties assigned to the result.
+
+    bool
+          print "it worked" if $result->bool;
+
+        Returns a boolean describing the result as success or failure.
+
+    errno
+          print "it worked" if $result->errno == 0;
+
+        Returns an errno for the result.
+
+    string
+          print $result->string unless $result->bool;
+
+        Returns a boolean describing the result as success or failure.
+
+    data
+          if ( $result->bool ) {
+              my $data = $result->data;
+              print foreach @{$data};
+          }
+
+        Returns the data structure passed to it.
+
+    prop
+          printf "%s: %s',
+            $result->string, join ' ', @{$result->prop('strings')}
+              unless $result->bool;
+
+        Returns the return value's properties. Accepts the name of a
+        property retured, or returns the properties hash reference if given
+        no name.
+
+  Overloading
+    Several operators are overloaded for "Return::Value" objects. They are
+    listed here.
+
+    Stringify
+          print "$result\n";
+
+        Stringifies to the "string" representation.
+
+    Boolean
+          print $result unless $result;
+
+        Returns the "bool" representation.
+
+    Numeric
+        Also returns the "bool" value.
+
