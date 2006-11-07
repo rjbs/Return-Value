@@ -14,7 +14,7 @@ Return::Value - Polymorphic Return Values
 
 =head1 VERSION
 
-version 1.30
+version 1.301
 
  $Id: Value.pm,v 1.5 2005/01/06 17:15:09 rjbs Exp $
 
@@ -246,6 +246,7 @@ sub type {
 };
 
 foreach my $name ( qw[errno string data] ) {
+    ## no critic (ProhibitNoStrict)
     no strict 'refs';
     *{$name} = sub {
         my ($self, $value) = @_;
@@ -254,7 +255,7 @@ foreach my $name ( qw[errno string data] ) {
     };
 }
 
-sub prop   {
+sub prop {
     my ($self, $name, $value) = @_;
     return _ah($self, 'prop')          unless $name;
     return _ah($self, 'prop')->{$name} unless @_ > 2;
