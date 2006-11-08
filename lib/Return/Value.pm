@@ -1,11 +1,13 @@
+use strict;
+## no critic RequireUseWarnings
 package Return::Value;
 # vi:et:sw=4 ts=4
-use strict;
 
 use vars qw[$VERSION @EXPORT];
 $VERSION = '1.301';
 @EXPORT  = qw[success failure];
 
+use Carp ();
 use base qw[Exporter];
 
 =head1 NAME
@@ -207,7 +209,7 @@ object's attributes.
 
 sub new {
     my $class = shift;
-    bless { type => 'failure', string => '', prop => {}, @_ } => $class;
+    bless { type => 'failure', string => q{}, prop => {}, @_ } => $class;
 }
 
 =pod
@@ -240,7 +242,7 @@ sub bool { _ah($_[0],'type') eq 'success' ? 1 : 0 }
 sub type {
     my ($self, $value) = @_;
     return _ah($self, 'type') unless @_ > 1;
-    die "invalid result type: $value"
+    Carp::carp "invalid result type: $value"
         unless $value eq 'success' or $value eq 'failure';
     return _ah($self, 'type', $value);
 };
