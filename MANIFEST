@@ -11,3 +11,4 @@ t/pod-coverage.t
 t/success.t
 t/use.t
 t/perl-critic.t
+LICENSE
