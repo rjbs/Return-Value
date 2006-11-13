@@ -1,0 +1,33 @@
+1.302  2006-11-13
+       perl-critic tests
+       croak, not die, on invalid constructor input
+
+1.301  2006-07-28
+       fix typoes in changelog and docs
+       improve test coverage
+
+1.30   2005-09-18 23:30
+       minor POD cleanup
+       added pod coverage test (kwalitee suckup)
+
+1.28   2004-12-20 16:00
+       changed bool return to just call ->bool
+       (returning undef crashes 5.6.1, argh! thanks, HDP!)
+
+1.26   2004-12-20 16:00
+       fixed: properties couldn't be undefined after defining
+       "use warnings" removed from tests to keep 5.005 happy
+
+1.24   2004-09-23 09:00
+       allow omission of message
+       ...even with other attributes
+       100% coverage
+
+1.22   2004-08-30 19:25
+       array and hash dereference will get the return data
+       full test coverage
+       'type' attribute is key to success/failure
+       POD improved
+
+1.1    2004-07-15
+       Initial Revision.
