@@ -242,7 +242,7 @@ sub bool { _ah($_[0],'type') eq 'success' ? 1 : 0 }
 sub type {
     my ($self, $value) = @_;
     return _ah($self, 'type') unless @_ > 1;
-    Carp::carp "invalid result type: $value"
+    Carp::croak "invalid result type: $value"
         unless $value eq 'success' or $value eq 'failure';
     return _ah($self, 'type', $value);
 };

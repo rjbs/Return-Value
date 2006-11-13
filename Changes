@@ -1,4 +1,4 @@
-1.302  2006-11-06
+1.302  2006-11-13
        perl-critic tests
        croak, not die, on invalid constructor input
 
