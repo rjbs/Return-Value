@@ -3,12 +3,12 @@ use strict;
 package Return::Value;
 # vi:et:sw=4 ts=4
 
-use vars qw[$VERSION @EXPORT];
-$VERSION = '1.301';
+use vars qw[$VERSION @EXPORT];  ## no critic Export
+$VERSION = '1.302';
 @EXPORT  = qw[success failure];
 
-use Carp ();
 use base qw[Exporter];
+use Carp ();
 
 =head1 NAME
 
@@ -16,9 +16,9 @@ Return::Value - Polymorphic Return Values
 
 =head1 VERSION
 
-version 1.301
+version 1.302
 
- $Id: Value.pm,v 1.5 2005/01/06 17:15:09 rjbs Exp $
+ $Id$
 
 =head1 SYNOPSIS
 
@@ -334,9 +334,9 @@ Ricardo Signes, <F<rjbs@cpan.org>>.
 
 =head1 COPYRIGHT
 
-  Copyright (c) 2004 Casey West and Ricardo SIGNES.  All rights reserved.
-  This module is free software; you can redistribute it and/or modify it
-  under the same terms as Perl itself.
+  Copyright (c) 2004-2006 Casey West and Ricardo SIGNES.  All rights reserved.
+  This module is free software; you can redistribute it and/or modify it under
+  the same terms as Perl itself.
 
 =cut
 
