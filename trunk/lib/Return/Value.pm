@@ -18,7 +18,7 @@ Return::Value - Polymorphic Return Values
 
 version 1.301
 
- $Id: Value.pm,v 1.5 2005/01/06 17:15:09 rjbs Exp $
+ $Id$
 
 =head1 SYNOPSIS
 
