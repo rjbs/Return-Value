@@ -4,7 +4,7 @@ package Return::Value;
 # vi:et:sw=4 ts=4
 
 use vars qw[$VERSION @EXPORT];  ## no critic Export
-$VERSION = '1.302';
+$VERSION = '1.303';
 @EXPORT  = qw[success failure];
 
 use base qw[Exporter];

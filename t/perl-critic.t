@@ -1,6 +1,5 @@
 #!perl
 use strict;
-use warnings;
 use Test::More;
 
 if ($ENV{PERL_TEST_CRITIC}) {
