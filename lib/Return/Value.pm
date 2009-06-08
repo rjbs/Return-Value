@@ -4,11 +4,14 @@ package Return::Value;
 # vi:et:sw=4 ts=4
 
 use vars qw[$VERSION @EXPORT $NO_CLUCK];  ## no critic Export
-$VERSION = '1.666000';
+$VERSION = '1.666001';
 @EXPORT  = qw[success failure];
 
 use base qw[Exporter];
 use Carp ();
+
+# uncomment in June 2010
+# Carp::cluck "Return::Value is deprecated" unless $NO_CLUCK;
 
 =head1 NAME
 
@@ -16,7 +19,7 @@ Return::Value - (deprecated) polymorphic return values
 
 =head1 VERSION
 
-version 1.666000
+version 1.666001
 
 =head1 DO NOT USE THIS LIBRARY
 
@@ -228,10 +231,6 @@ object's attributes.
 
 sub new {
     my $class = shift;
-    if (time > 1276012556) { # Tue Jun  8 11:55:56 2010
-        Carp::cluck "Return::Value is deprecated" unless $NO_CLUCK;
-    }
-
     bless { type => 'failure', string => q{}, prop => {}, @_ } => $class;
 }
 
