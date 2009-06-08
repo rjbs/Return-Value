@@ -1,3 +1,6 @@
+1.666000  2009-06-08
+          formally declare Return::Value deprecated
+
 1.303     2007-04-01
           fix test to work on 5.5
 

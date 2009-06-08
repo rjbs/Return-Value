@@ -3,8 +3,8 @@ use strict;
 package Return::Value;
 # vi:et:sw=4 ts=4
 
-use vars qw[$VERSION @EXPORT];  ## no critic Export
-$VERSION = '1.303';
+use vars qw[$VERSION @EXPORT $NO_CLUCK];  ## no critic Export
+$VERSION = '1.666000';
 @EXPORT  = qw[success failure];
 
 use base qw[Exporter];
@@ -12,13 +12,31 @@ use Carp ();
 
 =head1 NAME
 
-Return::Value - Polymorphic Return Values
+Return::Value - (deprecated) polymorphic return values
 
 =head1 VERSION
 
-version 1.302
+version 1.666000
 
- $Id$
+=head1 DO NOT USE THIS LIBRARY
+
+B<This library will begin issuing deprecation warnings in June 2010.>
+
+Return::Value was a bad idea.  i'm sorry that I had it, sorry that I followed
+through, and sorry that it got used in other useful libraries.  Fortunately
+there are not many things using it.  One of those things is
+L<Email::Send|Email::Send> which is also deprecated in favor of
+L<Email::Sender|Email::Sender>.
+
+There's no reason to specify a new module to replace Return::Value.  In
+general, routines should return values of uniform type or throw exceptions.
+Return::Value tried to be a uniform type for all routines, but has so much
+weird behavior that it ends up being confusing and not very Perl-like.
+
+Objects that are false are just a dreadful idea in almost every circumstance,
+especially when the object has useful properties.
+
+B<Please do not use this library.  You will just regret it later.>
 
 =head1 SYNOPSIS
 
@@ -66,7 +84,8 @@ Or, build your Return::Value as an object:
 
 =head1 DESCRIPTION
 
-Polymorphic return values are really useful.  Often, we just want to know if
+Polymorphic return values are a horrible idea, but this library was written
+based on the notion that they were useful.  Often, we just want to know if
 something worked or not.  Other times, we'd like to know what the error text
 was.  Still others, we may want to know what the error code was, and what the
 error properties were.  We don't want to handle objects or data structures for
@@ -77,8 +96,8 @@ When functions are successful they may return true, or perhaps some useful
 data.  In the quest to provide consistent return values, this gets confusing
 between complex, informational errors and successful return values.
 
-This module provides these features with a simple API that should get you what
-you're looking for in each contex a return value is used in.
+This module provides these features with a simplistic API that should get you
+what you're looking for in each context a return value is used in.
 
 =head2 Attributes
 
@@ -209,6 +228,10 @@ object's attributes.
 
 sub new {
     my $class = shift;
+    if (time > 1276012556) { # Tue Jun  8 11:55:56 2010
+        Carp::cluck "Return::Value is deprecated" unless $NO_CLUCK;
+    }
+
     bless { type => 'failure', string => q{}, prop => {}, @_ } => $class;
 }
 
@@ -324,7 +347,7 @@ use overload
 
 =head1 TODO
 
-No plans!
+Add deprecation.
 
 =head1 AUTHORS
 
@@ -341,5 +364,3 @@ Ricardo Signes, <F<rjbs@cpan.org>>.
 =cut
 
 "This return value is true.";
-
-__END__
