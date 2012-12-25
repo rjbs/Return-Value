@@ -1,10 +1,14 @@
-use Test::More tests => 31;
+use Test::More tests => 30;
 use strict;
 $^W = 1;
 
-my $class;
+my $class = 'Return::Value';
 
-BEGIN { $class = 'Return::Value'; use_ok($class); }
+BEGIN {
+  $Return::Value::NO_CLUCK = 1;
+}
+
+use Return::Value;
 
 {
 	my $message = "I've got a bad feelin' about this.";

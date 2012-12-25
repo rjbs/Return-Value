@@ -1,4 +1,7 @@
-#!perl -T
+#!perl
+BEGIN {
+  $Return::Value::NO_CLUCK = 1;
+}
 
 use Test::More;
 eval "use Test::Pod::Coverage 1.04";

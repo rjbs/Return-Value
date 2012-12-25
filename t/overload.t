@@ -1,8 +1,12 @@
-use Test::More tests => 22;
+use Test::More tests => 21;
 use strict;
 $^W = 1;
 
-BEGIN { use_ok 'Return::Value' };
+BEGIN {
+  $Return::Value::NO_CLUCK = 1;
+}
+
+use Return::Value;
 
 my $success = success;
 ok $success, 'good';

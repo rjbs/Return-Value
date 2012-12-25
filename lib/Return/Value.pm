@@ -4,14 +4,13 @@ package Return::Value;
 # vi:et:sw=4 ts=4
 
 use vars qw[$VERSION @EXPORT $NO_CLUCK];  ## no critic Export
-$VERSION = '1.666001';
+$VERSION = '1.666002';
 @EXPORT  = qw[success failure];
 
 use base qw[Exporter];
 use Carp ();
 
-# uncomment in June 2010
-# Carp::cluck "Return::Value is deprecated" unless $NO_CLUCK;
+Carp::cluck "Return::Value is deprecated" unless $NO_CLUCK;
 
 =head1 NAME
 
@@ -22,8 +21,6 @@ Return::Value - (deprecated) polymorphic return values
 version 1.666001
 
 =head1 DO NOT USE THIS LIBRARY
-
-B<This library will begin issuing deprecation warnings in June 2010.>
 
 Return::Value was a bad idea.  i'm sorry that I had it, sorry that I followed
 through, and sorry that it got used in other useful libraries.  Fortunately
@@ -40,6 +37,11 @@ Objects that are false are just a dreadful idea in almost every circumstance,
 especially when the object has useful properties.
 
 B<Please do not use this library.  You will just regret it later.>
+
+A release of this library in June 2009 promised that deprecation warnings would
+start being issued in June 2010.  It is now December 2012, and the warnings are
+now being issued.  They can be disabled through means made clear from the
+source.
 
 =head1 SYNOPSIS
 
@@ -343,10 +345,6 @@ use overload
 =pod
 
 =back
-
-=head1 TODO
-
-Add deprecation.
 
 =head1 AUTHORS
 

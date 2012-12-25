@@ -1,8 +1,12 @@
-use Test::More tests => 24;
+use Test::More tests => 23;
 use strict;
 $^W = 1;
 
-use_ok 'Return::Value';
+BEGIN {
+  $Return::Value::NO_CLUCK = 1;
+}
+
+use Return::Value;
 
 my $ret = Return::Value->new;
 isa_ok $ret, 'Return::Value';
