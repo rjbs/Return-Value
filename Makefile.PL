@@ -9,4 +9,9 @@ WriteMakefile (
       'Test::More' => '0.47',
     },
     VERSION_FROM  => 'lib/Return/Value.pm',
+    META_MERGE        => {
+        resources => {
+            repository  =>  'https://github.com/rjbs/return-value',
+        },
+    },
 );
