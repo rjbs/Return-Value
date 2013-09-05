@@ -130,7 +130,7 @@ accessed by dereferencing the return value itself.  (See below.)
 
 The most generic attribute of all, prop is a hashref that can be used to pass
 an arbitrary number of data structures, just like the data attribute.  Unlike
-the data attribute, though, these structures must be retrived via method calls.
+the data attribute, though, these structures must be retrieved via method calls.
 
 =back
 
@@ -243,7 +243,7 @@ Returns the result in boolean context: true for success, false for failure.
       unless $result->bool;
 
 Returns the return value's properties. Accepts the name of
-a property retured, or returns the properties hash reference
+a property returned, or returns the properties hash reference
 if given no name.
 
 =item other attribute accessors
