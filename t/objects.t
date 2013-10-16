@@ -2,10 +2,6 @@ use Test::More tests => 23;
 use strict;
 $^W = 1;
 
-BEGIN {
-  $Return::Value::NO_CLUCK = 1;
-}
-
 use Return::Value;
 
 my $ret = Return::Value->new;

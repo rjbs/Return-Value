@@ -4,10 +4,6 @@ $^W = 1;
 
 my $class = 'Return::Value';
 
-BEGIN {
-  $Return::Value::NO_CLUCK = 1;
-}
-
 use Return::Value;
 
 {

@@ -1,28 +1,20 @@
 use strict;
-## no critic RequireUseWarnings
+use warnings;
 package Return::Value;
 # vi:et:sw=4 ts=4
 
-use vars qw[$VERSION @EXPORT $NO_CLUCK];  ## no critic Export
-$VERSION = '1.666002';
-@EXPORT  = qw[success failure];
-
-use base qw[Exporter];
+use Exporter 5.57 'import';
 use Carp ();
 
-Carp::cluck "Return::Value is deprecated" unless $NO_CLUCK;
+our @EXPORT  = qw[success failure];
 
 =head1 NAME
 
 Return::Value - (deprecated) polymorphic return values
 
-=head1 VERSION
-
-version 1.666001
-
 =head1 DO NOT USE THIS LIBRARY
 
-Return::Value was a bad idea.  i'm sorry that I had it, sorry that I followed
+Return::Value was a bad idea.  I'm sorry that I had it, sorry that I followed
 through, and sorry that it got used in other useful libraries.  Fortunately
 there are not many things using it.  One of those things is
 L<Email::Send|Email::Send> which is also deprecated in favor of
@@ -345,18 +337,6 @@ use overload
 =pod
 
 =back
-
-=head1 AUTHORS
-
-Casey West, <F<casey@geeknest.com>>.
-
-Ricardo Signes, <F<rjbs@cpan.org>>.
-
-=head1 COPYRIGHT
-
-  Copyright (c) 2004-2006 Casey West and Ricardo SIGNES.  All rights reserved.
-  This module is free software; you can redistribute it and/or modify it under
-  the same terms as Perl itself.
 
 =cut
 

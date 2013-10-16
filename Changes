@@ -1,5 +1,9 @@
 Release history for Return-Value
 
+{{$NEXT}}
+          removed warning;  I wash my hands of this
+          library forever -- rjbs, 2013-10-15
+
 1.666002  2012-12-24
           finally started issuing long-promised warnings
 
