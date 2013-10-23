@@ -1,6 +1,8 @@
 Release history for Return-Value
 
 {{$NEXT}}
+        - I wash my hands of this library forever -- rjbs, 2013-10-15
+        - update NAME section to include abstract (Thanks, gregor herrmann)
 
 1.666003  2013-10-15 22:08:36 America/New_York
           removed warning;  I wash my hands of this

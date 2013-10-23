@@ -1,16 +1,13 @@
 use strict;
 use warnings;
 package Return::Value;
+# ABSTRACT: (deprecated) polymorphic return values
 # vi:et:sw=4 ts=4
 
 use Exporter 5.57 'import';
 use Carp ();
 
 our @EXPORT  = qw[success failure];
-
-=head1 NAME
-
-Return::Value - (deprecated) polymorphic return values
 
 =head1 DO NOT USE THIS LIBRARY
 
